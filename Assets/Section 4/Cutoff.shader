@@ -23,8 +23,6 @@
 
       void surf (Input IN, inout SurfaceOutput o) {
           o.Albedo = tex2D(_myDiffuse, IN.uv_myDiffuse).rgb;
-
-          half tex = tex2D(_myDiffuse, IN.uv_myDiffuse).rgb;
           half rim = 1 - saturate(dot(normalize(IN.viewDir), o.Normal));
           //o.Emission = rim > 0.5 ? float3(1,1,1): rim > 0.3 ? float3(1,0,0): 0;
           //o.Emission = IN.worldPos.y > 1 ? float3(0,1,0): float3(1,0,0);
