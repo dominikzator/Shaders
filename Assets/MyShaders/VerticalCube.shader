@@ -50,9 +50,7 @@
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.wPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-
-
-
+                
                 return o;
             }
 
@@ -66,6 +64,8 @@
 
             bool CheckPatternHit(float3 position)
             {
+                float3 CubeCenter = float3(unity_ObjectToWorld._m03,unity_ObjectToWorld._m13,unity_ObjectToWorld._m23);
+
                 float offsetA = _Scale / (_Rows + 1);
                 float offsetB = _Scale / (_Columns + 1);
                 float offsetC = _Scale / (_Depth + 1);
@@ -78,7 +78,7 @@
                         for (int c = 1; c <= _Depth; c++)
                         {
                             float currentPointZ = _Scale/2 - offsetC * c;
-                            float3 currentSpherePoint = float3(currentPointX, currentPointY, currentPointZ);
+                            float3 currentSpherePoint = CubeCenter + float3(currentPointX, currentPointY, currentPointZ);
                             if(SphereHit(position, currentSpherePoint, _SphereRadius))
                             {
                                 return position;
@@ -90,38 +90,29 @@
             }
 
 
-            float3 RaymarchHit(float3 position, float3 direction)
+            float4 RaymarchHit(float3 position, float3 direction)
             {
                 for (int i = 0; i < STEPS; i++)
                 {
-                    float3 CubeCenter = float3(unity_ObjectToWorld._m03,unity_ObjectToWorld._m13,unity_ObjectToWorld._m23);
-                    float4 objectOrigin = mul(unity_ObjectToWorld, float4(0.0,0.0,0.0,1) );
-                    float3 first = unity_ObjectToWorld._m00_m10_m20;
-                    float3 second = unity_ObjectToWorld._m01_m11_m21;
-                    float3 third = unity_ObjectToWorld._m02_m12_m22;
-                    //if(SphereHit(position, objectOrigin, 10.5))
-                    //{
-                    //    return position;
-                    //}
                     if(CheckPatternHit(position))
                     {
-                        return position;
+                        return float4(lerp(float3(0.5,0.5,0.5), position.xyz, _Alpha), 1);
                     }
                     position += direction * STEP_SIZE;
                 }
 
-                return float3(0.5,0.5,0.5);
+                return float4(0.5,0.5,0.5,1);
             }
             
             fixed4 frag (v2f i) : SV_Target
             {
                 float3 worldPosition = i.wPos;
                 float3 viewDirection = normalize(worldPosition - _WorldSpaceCameraPos);
-                float3 depth = RaymarchHit(worldPosition, viewDirection);
+                float4 color = RaymarchHit(worldPosition, viewDirection);
                 
-                if(length(depth) != 0)
+                if(length(color) != 0)
                 {
-                    return fixed4(depth,_Alpha);
+                    return color;
                 }
                 else
                 {
