@@ -81,5 +81,5 @@ Material:
     - _bottomColor: {r: 0.27525544, g: 1, b: 0, a: 1}
     - _color1: {r: 1, g: 0.5, b: 0.5, a: 1}
     - _color2: {r: 0.5, g: 1, b: 1, a: 1}
-    - _topColor: {r: 0, g: 0.47153687, b: 1, a: 1}
+    - _topColor: {r: 0.9433962, g: 0.35102078, b: 0.894, a: 0.7921569}
   m_BuildTextureStacks: []

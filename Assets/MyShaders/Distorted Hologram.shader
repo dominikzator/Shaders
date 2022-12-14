@@ -45,7 +45,6 @@
       void surf (Input IN, inout SurfaceOutput o) {
           half rim = 1.0 - saturate(dot (normalize(IN.viewDir), o.Normal));
           
-          float4 _randColor = (rand(o.Normal), rand(IN.viewDir), rand(IN.viewDir), 1);
           o.Emission = _enableHologram > 0 ? _RimColor.rgb * pow (rim, _RimPower) * 10 : 0;
           o.Alpha = _enableDistortion > 0 ? rand(IN.viewDir) * _StrengthFactor : pow (rim, _RimPower) * _StrengthFactor;
       }

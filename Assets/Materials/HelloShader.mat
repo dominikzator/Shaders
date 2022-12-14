@@ -111,12 +111,23 @@ Material:
     - _Mode: 0
     - _MySliderValue: 10
     - _OcclusionStrength: 1
+    - _Outline: 0.005
     - _Parallax: 0.02
-    - _RimPower: 2.61
+    - _RimPower: 3.62
+    - _SComp: 8
+    - _SOp: 2
+    - _SRef: 1
+    - _Scale1: 2
+    - _Scale2: 2
+    - _Scale3: 2
+    - _Scale4: 2
+    - _ScrollX: 1
+    - _ScrollY: 1
     - _ShowDecal: 0
     - _SmoothnessTextureChannel: 0
     - _Spec: 1
     - _SpecularHighlights: 1
+    - _Speed: 10
     - _SrcBlend: 1
     - _StripeFactor: 0.36
     - _StripeWidth: 10
@@ -133,14 +144,16 @@ Material:
     - _myZ: 1
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 0.49803922}
+    - _Color: {r: 0.8301887, g: 0, b: 0, a: 0.49803922}
     - _Colour: {r: 0.44705883, g: 0.44705883, b: 0.44705883, a: 0.44705883}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FirstColor: {r: 1, g: 0.62417626, b: 0, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 0.019000817, b: 0, a: 1}
     - _SecondColor: {r: 1, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThirdColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}
     - _myColor: {r: 1, g: 1, b: 1, a: 1}
     - _myColour: {r: 1, g: 0.57156146, b: 0, a: 1}
     - _myEmission: {r: 0, g: 0, b: 0, a: 1}
